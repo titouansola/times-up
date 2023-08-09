@@ -1,0 +1,7 @@
+{
+  "name": "times-up",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
