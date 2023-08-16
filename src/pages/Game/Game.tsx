@@ -1,4 +1,4 @@
-import { IonContent, IonPage } from '@ionic/react';
+import { IonButton, IonContent, IonPage } from '@ionic/react';
 import { useGameContext } from '../../common/hooks/contexts/useGameContext';
 import { Round } from '../../common/components/Round';
 
@@ -11,9 +11,13 @@ export function Game() {
         {gameContext.phaseIsRunning ? (
           <Round />
         ) : (
-          <button onClick={gameContext.startPhase}>
+          <IonButton
+            expand={'block'}
+            mode={'ios'}
+            onClick={gameContext.startPhase}
+          >
             Start phase {gameContext.phase + 1}
-          </button>
+          </IonButton>
         )}
       </IonContent>
     </IonPage>

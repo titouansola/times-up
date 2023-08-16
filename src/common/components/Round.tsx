@@ -1,5 +1,6 @@
 import { TIMER } from '../constants/timer';
 import { useGameContext } from '../hooks/contexts/useGameContext';
+import { IonButton } from '@ionic/react';
 
 export function Round() {
   const gameContext = useGameContext();
@@ -11,9 +12,13 @@ export function Round() {
       <p>{TIMER - gameContext.time}</p>
       <p>Team {currentTeam}</p>
       <p>{gameContext.currentWord()}</p>
-      <button onClick={gameContext.nextWord}>Next</button>
+      <IonButton expand={'block'} mode={'ios'} onClick={gameContext.nextWord}>
+        Next
+      </IonButton>
     </>
   ) : (
-    <button onClick={gameContext.startRound}>Start ({currentTeam})</button>
+    <IonButton expand={'block'} mode={'ios'} onClick={gameContext.startRound}>
+      Start ({currentTeam})
+    </IonButton>
   );
 }
