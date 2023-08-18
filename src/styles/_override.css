@@ -1,0 +1,20 @@
+/* INPUTS */
+ion-input.custom {
+  --background: var(--white);
+  --padding-start: 10px;
+  border-radius: 5px;
+  border: 3px solid var(--black);
+  box-shadow: 2px 2px 0 var(--black);
+  overflow: hidden;
+}
+
+/* BUTTONS */
+ion-button {
+  --border-color: var(--black);
+  --border-style: solid;
+  --border-width: 3px;
+  --border-radius: 5px;
+  --box-shadow: 2px 2px 0 var(--black);
+  font-weight: bold;
+  text-transform: uppercase;
+}

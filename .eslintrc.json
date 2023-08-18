@@ -1,5 +1,8 @@
 {
   "plugins": ["@typescript-eslint"],
+  "env": {
+    "browser": true
+  },
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",

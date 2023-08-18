@@ -1,7 +1,11 @@
 import { Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Game } from './pages/Game/Game';
+import { GamePage } from './pages/game/GamePage';
+import { Redirect } from 'react-router';
+import { SetupPage } from './pages/setup/SetupPage';
+import { GameOverPage } from './pages/end/GameOverPage';
+import { useThemeContext } from './common/hooks/contexts/useThemeContext';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -19,18 +23,30 @@ import '@ionic/react/css/text-transformation.css';
 import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
+import './styles/index.css';
+
 setupIonicReact();
 
-const App = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/">
-          <Game />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
-
-export default App;
+export function App() {
+  const [theme] = useThemeContext();
+  return (
+    <IonApp className={theme}>
+      <IonReactRouter>
+        <IonRouterOutlet>
+          <Route exact path="/end">
+            <GameOverPage />
+          </Route>
+          <Route exact path="/game">
+            <GamePage />
+          </Route>
+          <Route exact path="/setup">
+            <SetupPage />
+          </Route>
+          <Route exact path="/">
+            <Redirect to="/setup" />
+          </Route>
+        </IonRouterOutlet>
+      </IonReactRouter>
+    </IonApp>
+  );
+}

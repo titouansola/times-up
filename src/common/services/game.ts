@@ -1,6 +1,20 @@
 import { GameContextStateModel } from '../model/game-context';
-import { initialState, MAX_PHASE, MAX_TEAM } from '../constants/game';
+import {
+  initialState,
+  MAX_PHASE,
+  MAX_TEAM,
+  PHASE_ONE,
+  PHASE_THREE,
+  PHASE_TWO,
+} from '../constants/game';
 import { TIMER } from '../constants/timer';
+
+export function addWord(word: string) {
+  return (currentState: GameContextStateModel): GameContextStateModel => ({
+    ...currentState,
+    words: [...currentState.words, word],
+  });
+}
 
 export function updateWord(
   currentState: GameContextStateModel
@@ -21,6 +35,7 @@ export function endGame(
   return {
     ...initialState,
     teamsScores: currentState.teamsScores,
+    gameIsOver: true,
   };
 }
 
@@ -32,9 +47,10 @@ export function endPhase(
   if (phase === MAX_PHASE) {
     return endGame(currentState);
   } else {
+    const [w1, w2] = currentState.teamsWords;
     return switchTeam({
       ...currentState,
-      words: [...initialState.words],
+      words: [...w1, ...w2],
       teamsWords: [[], []],
       phaseIsRunning: false,
       phase,
@@ -76,11 +92,28 @@ export function startRound(
 export function startPhase(
   currentState: GameContextStateModel
 ): GameContextStateModel {
-  return { ...currentState, phaseIsRunning: true };
+  return updateWord({ ...currentState, phaseIsRunning: true });
 }
 
 export function currentWord(currentState: GameContextStateModel) {
   return currentState.words[currentState.currentWordIndex];
+}
+
+export function currentTeam(currentState: GameContextStateModel) {
+  return currentState.currentTeamIndex === 0 ? 'Red' : 'Blue';
+}
+
+export function currentPhaseDescription(currentState: GameContextStateModel) {
+  switch (currentState.phase) {
+    case PHASE_ONE:
+      return 'Use sentences to help guessing the word. No gestures allowed!';
+    case PHASE_TWO:
+      return 'Use only one word. Again, no gestures allowed!';
+    case PHASE_THREE:
+      return 'Use only mimes. No sound allowed!';
+    default:
+      return '';
+  }
 }
 
 export function switchTeam(

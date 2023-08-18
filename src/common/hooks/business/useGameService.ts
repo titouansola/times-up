@@ -5,6 +5,9 @@ import {
 } from '../../model/game-context';
 import { SECOND } from '../../constants/timer';
 import {
+  addWord,
+  currentPhaseDescription,
+  currentTeam,
   currentWord,
   nextWord,
   startPhase,
@@ -24,14 +27,18 @@ export function useGameService() {
 function useGameServiceActions(
   state: GameContextStateModel,
   setState: Dispatch<SetStateAction<GameContextStateModel>>
-) {
+): GameContextActionModel {
   return {
+    addWord: (w: string) => setState(addWord(w)),
     updateWord: () => setState(updateWord),
     updateTimer: () => setState(updateTimer),
     nextWord: () => setState(nextWord),
     startRound: () => setState(startRound),
     startPhase: () => setState(startPhase),
+    restart: () => setState({ ...initialState }),
     currentWord: () => currentWord(state),
+    currentTeam: () => currentTeam(state),
+    currentPhaseDescription: () => currentPhaseDescription(state),
   };
 }
 
@@ -40,15 +47,9 @@ function useGameServiceEffects(
   actions: GameContextActionModel
 ) {
   useEffect(() => {
-    actions.updateWord();
-  }, []);
-
-  useEffect(() => {
     if (state.roundIsRunning) {
-      // eslint-disable-next-line no-undef
-      const interval = setInterval(() => actions.updateTimer, SECOND);
-      // eslint-disable-next-line no-undef
-      return () => clearInterval(interval);
+      const interval = window.setInterval(actions.updateTimer, SECOND);
+      return () => window.clearInterval(interval);
     }
   }, [state.roundIsRunning]);
 }
