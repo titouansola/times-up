@@ -1,12 +1,14 @@
 import { useGameContext } from '../../../common/hooks/contexts/useGameContext';
 import { IonButton } from '@ionic/react';
 
+import './RoundWaitingRoom.css';
+
 export function RoundWaitingRoom() {
   const gameContext = useGameContext();
   return (
     <>
-      <div className="grow">
-        <p className={'team-turn'}>
+      <div className="grow content-centered">
+        <p className="team-turn">
           {gameContext.currentTeam()}!<br />
           It&apos;s your turn!
         </p>

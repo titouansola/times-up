@@ -41,7 +41,7 @@ export function SetupPage() {
               Next
             </IonButton>
           </div>
-          <p>{gameContext.words.length} words</p>
+          <p>Total : {gameContext.words.length}</p>
           <IonButton
             expand={'block'}
             disabled={gameContext.words.length < MIN_WORD_NUMBER}

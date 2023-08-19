@@ -1,4 +1,6 @@
-import { useGameContext } from '../hooks/contexts/useGameContext';
+import { useGameContext } from '../../hooks/contexts/useGameContext';
+
+import './Score.css';
 
 export function Score() {
   const gameContext = useGameContext();

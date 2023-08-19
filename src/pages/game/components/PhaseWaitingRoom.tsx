@@ -1,6 +1,6 @@
 import { IonButton } from '@ionic/react';
 import { useGameContext } from '../../../common/hooks/contexts/useGameContext';
-import { Score } from '../../../common/components/Score';
+import { Score } from '../../../common/components/Score/Score';
 
 export function PhaseWaitingRoom() {
   const gameContext = useGameContext();

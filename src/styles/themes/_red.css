@@ -3,4 +3,7 @@
   --ion-color-primary: #da1515;
   --ion-color-primary-tint: #f32424;
   --ion-color-primary-shade: #622323;
+
+  --background-fill: #bf3e3e;
+  --background-fill-top: url('../../assets/top-fill-red.svg');
 }

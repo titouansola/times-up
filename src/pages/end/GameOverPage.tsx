@@ -1,7 +1,7 @@
 import { useGameContext } from '../../common/hooks/contexts/useGameContext';
 import { IonButton, IonContent, IonPage } from '@ionic/react';
 import { Redirect } from 'react-router';
-import { Score } from '../../common/components/Score';
+import { Score } from '../../common/components/Score/Score';
 
 export function GameOverPage() {
   const gameContext = useGameContext();
@@ -14,8 +14,8 @@ export function GameOverPage() {
     <IonPage>
       <IonContent fullscreen>
         <div className="content">
-          <div className="grow">
-            <p>Game Over</p>
+          <div className="grow content-centered">
+            <h3>Game Over!</h3>
             <Score />
           </div>
           <IonButton expand={'block'} onClick={gameContext.restart}>
