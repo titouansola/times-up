@@ -1,5 +1,5 @@
-import { useGameContext } from '../../../common/hooks/contexts/useGameContext';
 import { IonButton } from '@ionic/react';
+import { useGameContext } from '../../../common/hooks/contexts/useGameContext';
 
 import './RoundWaitingRoom.css';
 
@@ -14,7 +14,7 @@ export function RoundWaitingRoom() {
         </p>
       </div>
       <IonButton expand={'block'} mode={'ios'} onClick={gameContext.startRound}>
-        Let&apos;s go!
+        Here we go!
       </IonButton>
     </>
   );

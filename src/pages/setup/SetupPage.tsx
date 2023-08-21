@@ -15,8 +15,11 @@ export function SetupPage() {
   const gameContext = useGameContext();
 
   const onSubmit = () => {
-    gameContext.addWord(word);
-    setWord('');
+    const newWord = word.trim();
+    if (newWord.length > 0) {
+      gameContext.addWord(word);
+      setWord('');
+    }
   };
 
   const onStartGame = () => router.push('/game');
@@ -29,17 +32,19 @@ export function SetupPage() {
             <h1>Time&apos;s Up!</h1>
             <p>Choose your words secretly, then pass to another player!</p>
             <IonInput
+              autocorrect="on"
+              enterkeyhint="next"
+              inputmode="text"
+              spellcheck={true}
               label="Enter a word"
               aria-label="Enter a word"
               placeholder="Banana"
               labelPlacement="floating"
               className="custom"
               value={word}
+              onIonChange={onSubmit}
               onIonInput={e => setWord(e.target.value as string)}
             />
-            <IonButton expand={'block'} onClick={onSubmit} disabled={!word}>
-              Next
-            </IonButton>
           </div>
           <p>Total : {gameContext.words.length}</p>
           <IonButton
@@ -47,7 +52,7 @@ export function SetupPage() {
             disabled={gameContext.words.length < MIN_WORD_NUMBER}
             onClick={onStartGame}
           >
-            Start game
+            Let&apos;s go!
           </IonButton>
         </div>
       </IonContent>

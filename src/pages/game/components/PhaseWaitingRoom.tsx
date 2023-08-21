@@ -11,10 +11,14 @@ export function PhaseWaitingRoom() {
         <p>{gameContext.currentPhaseDescription()}</p>
         <p>{gameContext.words.length} words left to guess</p>
         <Score />
+        <IonButton
+          expand={'block'}
+          mode={'ios'}
+          onClick={gameContext.startPhase}
+        >
+          Start
+        </IonButton>
       </div>
-      <IonButton expand={'block'} mode={'ios'} onClick={gameContext.startPhase}>
-        Start phase
-      </IonButton>
     </>
   );
 }
