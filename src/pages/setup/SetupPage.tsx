@@ -3,6 +3,9 @@ import { IonButton, IonContent, IonInput, IonPage } from '@ionic/react';
 import { useGameContext } from '../../common/hooks/contexts/useGameContext';
 import { MIN_WORD_NUMBER } from '../../common/constants/game';
 import { ConfirmModal } from './components/ConfirmModal';
+import { version } from '../../../package.json';
+
+import './SetupPage.css';
 
 export function SetupPage() {
   const [word, setWord] = useState('');
@@ -21,7 +24,10 @@ export function SetupPage() {
       <IonContent fullscreen>
         <div className="content">
           <div className="grow">
-            <h1>Time&apos;s Up!</h1>
+            <h1>
+              Time&apos;s Up!
+              <p className="version">{version}</p>
+            </h1>
             <p>Choose your words secretly, then pass to another player!</p>
             <IonInput
               autocorrect="on"
