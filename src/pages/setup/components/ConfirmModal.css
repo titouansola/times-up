@@ -1,0 +1,42 @@
+ion-modal#confirm-modal {
+    --width: 85%;
+    --height: fit-content;
+    --backdrop-opacity: .5;
+    --border-radius: 10px;
+    --border-color: var(--black);
+    --border-style: solid;
+    --border-width: 4px;
+    --box-shadow: 5px 10px 20px rgba(0, 0, 0, .5);
+    backdrop-filter: blur(4px);
+}
+
+ion-modal#confirm-modal .wrapper {
+    padding: 24px 32px;
+}
+
+ion-modal#confirm-modal h4 {
+    margin: 0;
+    text-align: center;
+    font-weight: 600;
+}
+
+ion-modal#confirm-modal p {
+    margin: 0;
+}
+
+ion-modal#confirm-modal p#intro {
+    margin-top: 24px;
+    font-weight: 200;
+    font-size: 16px;
+}
+ion-modal#confirm-modal p#word-count {
+    margin-top: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+ion-modal#confirm-modal .btn-toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+}

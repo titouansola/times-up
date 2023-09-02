@@ -1,17 +1,11 @@
 import { useState } from 'react';
-import {
-  IonButton,
-  IonContent,
-  IonInput,
-  IonPage,
-  useIonRouter,
-} from '@ionic/react';
+import { IonButton, IonContent, IonInput, IonPage } from '@ionic/react';
 import { useGameContext } from '../../common/hooks/contexts/useGameContext';
 import { MIN_WORD_NUMBER } from '../../common/constants/game';
+import { ConfirmModal } from './components/ConfirmModal';
 
 export function SetupPage() {
   const [word, setWord] = useState('');
-  const router = useIonRouter();
   const gameContext = useGameContext();
 
   const onSubmit = () => {
@@ -21,8 +15,6 @@ export function SetupPage() {
       setWord('');
     }
   };
-
-  const onStartGame = () => router.push('/game');
 
   return (
     <IonPage>
@@ -48,13 +40,14 @@ export function SetupPage() {
           </div>
           <p>Total : {gameContext.words.length}</p>
           <IonButton
-            expand={'block'}
+            id="confirm-btn"
+            expand="block"
             disabled={gameContext.words.length < MIN_WORD_NUMBER}
-            onClick={onStartGame}
           >
             Let&apos;s go!
           </IonButton>
         </div>
+        <ConfirmModal />
       </IonContent>
     </IonPage>
   );
