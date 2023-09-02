@@ -121,10 +121,10 @@ export function switchTeam(
 ): GameContextStateModel {
   let { currentTeamIndex } = currentState;
   currentTeamIndex = (currentTeamIndex + 1) % MAX_TEAM;
-  return {
+  return updateWord({
     ...currentState,
     time: 0,
     currentTeamIndex,
     roundIsRunning: false,
-  };
+  });
 }
