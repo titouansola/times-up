@@ -1,0 +1,48 @@
+.background-fill {
+    content: '';
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-fill);
+    animation: run 30s linear;
+}
+.background-fill-top {
+    --size: 30px;
+    position: relative;
+    width: 100%;
+}
+.background-fill-top:before,
+.background-fill-top:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: calc(-1 * var(--size));
+    width: 100%;
+    height: var(--size);
+    background: var(--background-fill-top) no-repeat bottom;
+    animation: flood 1s linear infinite;
+}
+.background-fill-top:before {
+    translate: -100% 0;
+}
+
+@keyframes run {
+    from {
+        height: 0;
+    }
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes flood {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}

@@ -1,0 +1,9 @@
+.blue {
+  --ion-background-color: #509df8;
+  --ion-color-primary: #0052b2;
+  --ion-color-primary-tint: #0c6ad9;
+  --ion-color-primary-shade: #1e334a;
+
+  --background-fill: #3b72b2;
+  --background-fill-top: url('../../top-fill-blue.svg');
+}

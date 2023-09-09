@@ -1,0 +1,21 @@
+.round-outro {
+    color: var(--white);
+}
+
+.word-list {
+    max-height: 60vh;
+    overflow: auto;
+}
+
+.word-to-confirm {
+    display: flex;
+    padding: 0 24px;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.word-to-confirm p {
+    font-weight: 800;
+    font-size: 24px;
+    margin: 10px 0;
+}
